@@ -2907,10 +2907,7 @@ class ProxyConfig:
         # For dictionary values, update only non-none values
         if isinstance(current_config[param_name], dict):
             # Only keep non None values from db_param_value
-            non_none_values = {
-                k: v for k, v in db_param_value.items()
-                if v is not None and not (isinstance(v, (dict, list, str)) and len(v) == 0)
-            }
+            non_none_values = {k: v for k, v in db_param_value.items() if v is not None}
 
             # Update the config with non-none values
             current_config[param_name].update(non_none_values)
