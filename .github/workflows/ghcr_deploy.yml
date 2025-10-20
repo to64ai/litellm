@@ -1,5 +1,5 @@
 # this workflow is triggered by an API call when there is a new PyPI release of LiteLLM
-name: Build, Publish LiteLLM Docker Image. New Release
+name: Build, Publish VPA (aka LiteLLM) Docker Image. New Release
 on:
   workflow_dispatch:
     inputs:
@@ -17,7 +17,7 @@ on:
 # Defines two custom environment variables for the workflow. Used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: to64ai/vpa
   CHART_NAME: litellm-helm
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
@@ -122,9 +122,9 @@ jobs:
           tags: |
             ${{ steps.meta.outputs.tags }}-${{ github.event.inputs.tag || 'latest' }},
             ${{ steps.meta.outputs.tags }}-${{ github.event.inputs.release_type }}
-            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/berriai/litellm:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
-            ${{ github.event.inputs.release_type == 'stable' && format('{0}/berriai/litellm:main-stable', env.REGISTRY) || '' }},
-            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/berriai/litellm:{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
+            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/to64ai/litellm:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
+            ${{ github.event.inputs.release_type == 'stable' && format('{0}/to64ai/litellm:main-stable', env.REGISTRY) || '' }},
+            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/to64ai/litellm:{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
           labels: ${{ steps.meta.outputs.labels }}
           platforms: local,linux/amd64,linux/arm64,linux/arm64/v8
   
@@ -166,8 +166,8 @@ jobs:
           tags: |
             ${{ steps.meta-ee.outputs.tags }}-${{ github.event.inputs.tag || 'latest' }},
             ${{ steps.meta-ee.outputs.tags }}-${{ github.event.inputs.release_type }}
-            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/berriai/litellm-ee:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
-            ${{ github.event.inputs.release_type == 'stable' && format('{0}/berriai/litellm-ee:main-stable', env.REGISTRY) || '' }}
+            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/to64ai/litellm-ee:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
+            ${{ github.event.inputs.release_type == 'stable' && format('{0}/to64ai/litellm-ee:main-stable', env.REGISTRY) || '' }}
           labels: ${{ steps.meta-ee.outputs.labels }}
           platforms: local,linux/amd64,linux/arm64,linux/arm64/v8
    
@@ -209,8 +209,8 @@ jobs:
           tags: |
             ${{ steps.meta-database.outputs.tags }}-${{ github.event.inputs.tag || 'latest' }},
             ${{ steps.meta-database.outputs.tags }}-${{ github.event.inputs.release_type }}
-            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/berriai/litellm-database:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
-            ${{ github.event.inputs.release_type == 'stable' && format('{0}/berriai/litellm-database:main-stable', env.REGISTRY) || '' }}
+            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/to64ai/litellm-database:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
+            ${{ github.event.inputs.release_type == 'stable' && format('{0}/to64ai/litellm-database:main-stable', env.REGISTRY) || '' }}
           labels: ${{ steps.meta-database.outputs.labels }}
           platforms: local,linux/amd64,linux/arm64,linux/arm64/v8
             
@@ -252,8 +252,8 @@ jobs:
           tags: |
             ${{ steps.meta-non_root.outputs.tags }}-${{ github.event.inputs.tag || 'latest' }},
             ${{ steps.meta-non_root.outputs.tags }}-${{ github.event.inputs.release_type }}
-            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/berriai/litellm-non_root:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
-            ${{ github.event.inputs.release_type == 'stable' && format('{0}/berriai/litellm-non_root:main-stable', env.REGISTRY) || '' }}
+            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/to64ai/litellm-non_root:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
+            ${{ github.event.inputs.release_type == 'stable' && format('{0}/to64ai/litellm-non_root:main-stable', env.REGISTRY) || '' }}
           labels: ${{ steps.meta-non_root.outputs.labels }} 
           platforms: local,linux/amd64,linux/arm64,linux/arm64/v8
   
@@ -295,8 +295,8 @@ jobs:
           tags: |
             ${{ steps.meta-spend-logs.outputs.tags }}-${{ github.event.inputs.tag || 'latest' }},
             ${{ steps.meta-spend-logs.outputs.tags }}-${{ github.event.inputs.release_type }}
-            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/berriai/litellm-spend_logs:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
-            ${{ github.event.inputs.release_type == 'stable' && format('{0}/berriai/litellm-spend_logs:main-stable', env.REGISTRY) || '' }}
+            ${{ (github.event.inputs.release_type == 'stable'  || github.event.inputs.release_type == 'rc') && format('{0}/to64ai/lightllm-spend_logs:main-{1}', env.REGISTRY, github.event.inputs.tag) || '' }},
+            ${{ github.event.inputs.release_type == 'stable' && format('{0}/to64ai/lightllm-spend_logs:main-stable', env.REGISTRY) || '' }}
           platforms: local,linux/amd64,linux/arm64,linux/arm64/v8
 
   build-and-push-helm-chart:
@@ -394,7 +394,7 @@ jobs:
           update_dependencies: true
 
   release:
-    name: "New LiteLLM Release"
+    name: "New VPA Release"
     needs: [docker-hub-deploy, build-and-push-image, build-and-push-image-database]
 
     runs-on: "ubuntu-latest"
@@ -449,22 +449,3 @@ jobs:
             }
         env:
           RELEASE_ID: ${{ env.RELEASE_ID }}
-      - name: Github Releases To Discord
-        env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-          REALEASE_TAG: ${{ env.RELEASE_TAG }}
-          RELEASE_NOTES: ${{ steps.release-notes.outputs.result }}
-        run: |
-          curl -H "Content-Type: application/json" -X POST -d '{
-            "content": "New LiteLLM release '"${RELEASE_TAG}"'",
-            "username": "Release Changelog",
-            "avatar_url": "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png",
-            "embeds": [
-              {
-                "title": "Changelog for LiteLLM '"${RELEASE_TAG}"'",
-                "description": "'"${RELEASE_NOTES}"'",
-                "color": 2105893
-              }
-            ]
-          }' $WEBHOOK_URL
-
