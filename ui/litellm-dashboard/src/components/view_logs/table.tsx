@@ -19,7 +19,7 @@ export function DataTable<TData, TValue>({
   getRowCanExpand,
   renderSubComponent,
   isLoading = false,
-  loadingMessage = "🚅 Loading logs...",
+  loadingMessage = "⭕ Loading logs...",
   noDataMessage = "No logs found",
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable<TData>({
