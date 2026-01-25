@@ -160,7 +160,7 @@ export function ModelDataTable<TData, TValue>({
                 <TableRow>
                   <TableCell colSpan={columns.length} className="h-8 text-center">
                     <div className="text-center text-gray-500">
-                      <p>🚅 Loading models...</p>
+                      <p>⭕ Loading models...</p>
                     </div>
                   </TableCell>
                 </TableRow>

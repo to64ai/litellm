@@ -432,7 +432,7 @@ export function UserDataTable({
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-8 text-center">
                   <div className="text-center text-gray-500">
-                    <p>🚅 Loading users...</p>
+                    <p>⭕ Loading users...</p>
                   </div>
                 </TableCell>
               </TableRow>
