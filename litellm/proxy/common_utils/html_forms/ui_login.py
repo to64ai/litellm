@@ -30,7 +30,7 @@ html_form = f"""
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>to64 Login</title>
+    <title>To64 Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {favicon_link}
     <style>
@@ -220,7 +220,7 @@ html_form = f"""
             {logo_img_tag}
         </div>
         <h2>Login</h2>
-        <p class="subtitle">Access your to64 VPA Admin UI.</p>
+        <p class="subtitle">Access your To64 VPA Admin UI.</p>
         <div class="info-box">
             <div class="info-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
