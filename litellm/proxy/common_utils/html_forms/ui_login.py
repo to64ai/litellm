@@ -1,5 +1,6 @@
+import base64
 import os
-
+from pathlib import Path
 from litellm.proxy.utils import get_custom_url
 
 url_to_redirect_to = os.getenv("PROXY_BASE_URL", "")
@@ -8,6 +9,23 @@ if server_root_path != "":
     url_to_redirect_to += server_root_path
 url_to_redirect_to += "/login"
 new_ui_login_url = get_custom_url("", "ui/login")
+
+# Load logo as base64
+logo_path = Path(__file__).parent / "logo.jpg"
+logo_base64 = ""
+if logo_path.exists():
+    with open(logo_path, "rb") as f:
+        logo_base64 = base64.b64encode(f.read()).decode("utf-8")
+
+# Load favicon as base64
+favicon_path = Path(__file__).parent / "favicon.png"
+favicon_base64 = ""
+if favicon_path.exists():
+    with open(favicon_path, "rb") as f:
+        favicon_base64 = base64.b64encode(f.read()).decode("utf-8")
+
+logo_img_tag = f'<img src="data:image/jpeg;base64,{logo_base64}" alt="to64.ai" class="logo-img">' if logo_base64 else '<div class="logo">to64.ai</div>'
+favicon_link = f'<link rel="icon" type="image/png" href="data:image/png;base64,{favicon_base64}">' if favicon_base64 else ''
 
 
 def build_ui_login_form(show_deprecation_banner: bool = False) -> str:
@@ -28,8 +46,9 @@ def build_ui_login_form(show_deprecation_banner: bool = False) -> str:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LiteLLM Login</title>
+    <title>To64 VPA Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {favicon_link}
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -61,6 +80,12 @@ def build_ui_login_form(show_deprecation_banner: bool = False) -> str:
             font-size: 24px;
             font-weight: 600;
             color: #1e293b;
+        }}
+
+        .logo-img {{
+            max-width: 150px;
+            max-height: 60px;
+            object-fit: contain;
         }}
         
         h2 {{
@@ -226,12 +251,10 @@ def build_ui_login_form(show_deprecation_banner: bool = False) -> str:
     <form action="{url_to_redirect_to}" method="post">
         {banner_html}
         <div class="logo-container">
-            <div class="logo">
-                🚅 LiteLLM
-            </div>
+            {logo_img_tag}
         </div>
         <h2>Login</h2>
-        <p class="subtitle">Access your LiteLLM Admin UI.</p>
+        <p class="subtitle">Access your To64 VPA Admin UI.</p>
         <div class="info-box">
             <div class="info-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -241,7 +264,7 @@ def build_ui_login_form(show_deprecation_banner: bool = False) -> str:
                 </svg>
                 Default Credentials
             </div>
-            <p>By default, Username is <code>admin</code> and Password is your set LiteLLM Proxy <code>MASTER_KEY</code>.</p>
+            <p>By default, Username is <code>admin</code> and Password is your set Proxy <code>MASTER_KEY</code>.</p>
             <p>Need to set UI credentials or SSO? <a href="https://docs.litellm.ai/docs/proxy/ui" target="_blank">Check the documentation</a>.</p>
         </div>
         <label for="username">Username<span class="required">*</span></label>
