@@ -231,7 +231,7 @@ html_form = f"""
                 Default Credentials
             </div>
             <p>By default, Username is <code>admin</code> and Password is your set Proxy <code>MASTER_KEY</code>.</p>
-            <p>Need to set UI credentials or SSO? <a href="https://docs.to64.ai/docs/proxy/ui" target="_blank">Check the documentation</a>.</p>
+            <p>Need to set UI credentials or SSO? <a href="https://docs.litellm.ai/docs/proxy/ui" target="_blank">Check the documentation</a>.</p>
         </div>
         <label for="username">Username<span class="required">*</span></label>
         <input type="text" id="username" name="username" required placeholder="Enter your username" autocomplete="username">
