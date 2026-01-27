@@ -2046,7 +2046,7 @@ class ConfigGeneralSettings(LiteLLMPydanticObjectBase):
     )
     pass_through_endpoints: Optional[List[PassThroughGenericEndpoint]] = Field(
         default=None,
-        description="Set-up pass-through endpoints for provider-specific endpoints. Docs - https://docs.litellm.ai/docs/proxy/pass_through",
+        description="Set-up pass-through endpoints for provider-specific endpoints.",
     )
     user_header_name: Optional[str] = Field(
         None,

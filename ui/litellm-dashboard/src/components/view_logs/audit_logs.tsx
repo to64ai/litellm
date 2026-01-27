@@ -430,7 +430,7 @@ export default function AuditLogs({
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <h1 style={{ display: "block", marginBottom: "10px" }}>✨ Enterprise Feature.</h1>
         <Text style={{ display: "block", marginBottom: "10px" }}>
-          This is a LiteLLM Enterprise feature, and requires a valid key to use.
+          This is a To64 Enterprise feature, and requires a valid key to use.
         </Text>
         <Text style={{ display: "block", marginBottom: "20px", fontStyle: "italic" }}>
           Here&apos;s a preview of what Audit Logs offer:

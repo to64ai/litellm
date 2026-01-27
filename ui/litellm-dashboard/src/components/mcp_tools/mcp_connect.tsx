@@ -285,7 +285,7 @@ const MCPConnect: React.FC<MCPConnectProps> = ({ currentServerAccessGroups = [] 
           </Title>
         </div>
         <Text className="text-blue-700">
-          Connect OpenAI Responses API to your LiteLLM MCP server for seamless tool integration
+          Connect OpenAI Responses API to your To64VPA MCP server for seamless tool integration
         </Text>
       </div>
 
@@ -483,7 +483,7 @@ const MCPConnect: React.FC<MCPConnectProps> = ({ currentServerAccessGroups = [] 
         <div>
           <TremorTitle className="text-3xl font-bold text-gray-900 mb-3">Connect to your MCP client</TremorTitle>
           <TremorText className="text-lg text-gray-600">
-            Use tools directly from any MCP client with LiteLLM MCP. Enable your AI assistant to perform real-world
+            Use tools directly from any MCP client with To64 VPA MCP. Enable your AI assistant to perform real-world
             tasks through a simple, secure connection.
           </TremorText>
         </div>

@@ -56,13 +56,13 @@ const EmailSettings: React.FC<EmailSettingsProps> = ({ accessToken, premiumUser,
       </div>
       <Card>
         <Title level={4}>Email Server Settings</Title>
-        <Text>
+        {/* <Text>
           <a href="https://docs.litellm.ai/docs/proxy/email" target="_blank" style={{ color: "blue" }}>
             {" "}
             LiteLLM Docs: email alerts
           </a>{" "}
           <br />
-        </Text>
+        </Text> */}
 
         <div className="flex w-full">
           {alerts
@@ -125,14 +125,14 @@ const EmailSettings: React.FC<EmailSettingsProps> = ({ accessToken, premiumUser,
 
                           {key === "SMTP_SENDER_EMAIL" && (
                             <div style={{ color: "gray" }}>
-                              Enter the sender email address, e.g. `sender@berri.ai`
+                              Enter the sender email address, e.g. `support@to64.ai`
                               <span style={{ color: "red" }}> Required * </span>
                             </div>
                           )}
 
                           {key === "TEST_EMAIL_ADDRESS" && (
                             <div style={{ color: "gray" }}>
-                              Email Address to send `Test Email Alert` to. example: `info@berri.ai`
+                              Email Address to send `Test Email Alert` to. example: `support@to64.ai`
                               <span style={{ color: "red" }}> Required * </span>
                             </div>
                           )}
@@ -144,7 +144,7 @@ const EmailSettings: React.FC<EmailSettingsProps> = ({ accessToken, premiumUser,
                           {key === "EMAIL_SUPPORT_CONTACT" && (
                             <div style={{ color: "gray" }}>
                               (Optional) Customize the support email address that appears in the email. Default is
-                              support@berri.ai
+                              support@to64.ai
                             </div>
                           )}
                         </p>

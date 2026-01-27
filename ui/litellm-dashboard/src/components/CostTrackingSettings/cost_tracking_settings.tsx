@@ -158,7 +158,7 @@ const CostTrackingSettings: React.FC<CostTrackingSettingsProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <Title>Cost Tracking Settings</Title>
-            <DocsMenu items={DOCS_LINKS} />
+            {/* <DocsMenu items={DOCS_LINKS} /> */}
           </div>
           <Text className="text-gray-500 mt-1">
             Configure cost discounts and margins for different LLM providers. Changes are saved automatically.
