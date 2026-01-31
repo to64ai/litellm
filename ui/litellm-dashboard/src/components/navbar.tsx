@@ -11,17 +11,15 @@ import {
 import { fetchProxySettings } from "@/utils/proxyUtils";
 import {
   CrownOutlined,
-  GithubOutlined,
   LogoutOutlined,
   MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SafetyOutlined,
-  SlackOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Button, Dropdown, Switch, Tooltip } from "antd";
+import { Dropdown, Switch, Tooltip } from "antd";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
