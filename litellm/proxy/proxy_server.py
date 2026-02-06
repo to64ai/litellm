@@ -572,21 +572,19 @@ ui_link = f"{server_root_path}/ui"
 fallback_login_link = f"{server_root_path}/fallback/login"
 model_hub_link = f"{server_root_path}/ui/model_hub_table"
 ui_message = f"👉 [```To64 VPA Admin Panel on /ui```]({ui_link}). Create, Edit Keys with SSO. Having issues? Try [```Fallback Login```]({fallback_login_link})"
-ui_message += "\n\n💸 [```To64 VPA Model Cost Map```](https://models.litellm.ai/)."
+# ui_message += "\n\n💸 [```To64 VPA Model Cost Map```](https://models.litellm.ai/)."
 
-ui_message += f"\n\n🔎 [```To64 VPA Model Hub```]({model_hub_link}). See available models on the proxy. [**Docs**](https://docs.litellm.ai/docs/proxy/ai_hub)"
-
-custom_swagger_message = "[**Customize Swagger Docs**](https://docs.litellm.ai/docs/proxy/enterprise#swagger-docs---custom-routes--branding)"
+ui_message += f"\n\n🔎 [```To64 VPA Model Hub```]({model_hub_link})."
 
 ### CUSTOM BRANDING [ENTERPRISE FEATURE] ###
 _title = os.getenv("DOCS_TITLE", "To64 VPA API") if premium_user else "To64 VPA API"
 _description = (
     os.getenv(
         "DOCS_DESCRIPTION",
-        f"Enterprise Edition \n\nProxy Server to call 100+ LLMs in the OpenAI format. {custom_swagger_message}\n\n{ui_message}",
+        f"Enterprise Edition \n\n{ui_message}",
     )
     if premium_user
-    else f"Proxy Server to call 100+ LLMs in the OpenAI format. {custom_swagger_message}\n\n{ui_message}"
+    else f"{ui_message}"
 )
 
 
@@ -1058,6 +1056,12 @@ try:
                     modified_content = modified_content.replace(
                         "/litellm/.well-known/litellm-ui-config",
                         f"{server_root_path}/.well-known/litellm-ui-config",
+                    )
+
+                    # Replace hardcoded /ui/logos/ paths (favicon, login logo)
+                    modified_content = modified_content.replace(
+                        "/ui/logos/",
+                        f"{server_root_path}/ui/logos/",
                     )
 
                     with open(file_path, "w", encoding="utf-8") as f:

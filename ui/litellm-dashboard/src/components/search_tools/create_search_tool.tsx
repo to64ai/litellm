@@ -276,8 +276,8 @@ const CreateSearchTool: React.FC<CreateSearchToolProps> = ({
           </div>
 
           <div className="flex justify-between items-center pt-6 border-t border-gray-100">
-            <Tooltip title="Get help on our github">
-              <Typography.Link href="https://github.com/BerriAI/litellm/issues" target="_blank">
+            <Tooltip title="Get help from our support team">
+              <Typography.Link href="mailto:support@to64.ai?subject=Help%20with%20Search%20Tools&body=Hi%20To64%20Team%2C%0A%0AI%20need%20help%20with%20setting%20up%20search%20tools.%0A%0AIssue%20Description%3A%20%0A%0AThank%20you!">
                 Need Help?
               </Typography.Link>
             </Tooltip>

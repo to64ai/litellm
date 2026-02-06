@@ -6,7 +6,6 @@ import LoadingScreen from "@/components/common_components/LoadingScreen";
 import { getProxyBaseUrl } from "@/components/networking";
 import { getCookie } from "@/utils/cookieUtils";
 import { isJwtExpired } from "@/utils/jwtUtils";
-import { InfoCircleOutlined } from "@ant-design/icons";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Alert, Button, Card, Form, Input, Space, Typography } from "antd";
 import { useRouter } from "next/navigation";
@@ -72,7 +71,7 @@ function LoginPageContent() {
         <Card className="w-full max-w-lg shadow-md">
           <Space direction="vertical" size="middle" className="w-full">
             <div className="text-center">
-              <Title level={2}>🚅 LiteLLM</Title>
+              <img src="/ui/logos/logo.jpg" alt="To64 VPA" className="h-12 w-auto mx-auto" />
             </div>
 
             <Alert
@@ -102,21 +101,21 @@ function LoginPageContent() {
       <Card className="w-full max-w-lg shadow-md">
         <Space direction="vertical" size="middle" className="w-full">
           <div className="text-center">
-            <Title level={2}>🚅 LiteLLM</Title>
+            <img src="/ui/logos/logo.jpg" alt="To64 VPA" className="h-12 w-auto mx-auto" />
           </div>
 
           <div className="text-center">
             <Title level={3}>Login</Title>
-            <Text type="secondary">Access your LiteLLM Admin UI.</Text>
+            <Text type="secondary">Access your Admin UI.</Text>
           </div>
 
-          <Alert
+          {/* <Alert
             message="Default Credentials"
             description={
               <>
                 <Paragraph className="text-sm">
                   By default, Username is <code className="bg-gray-100 px-1 py-0.5 rounded text-xs">admin</code> and
-                  Password is your set LiteLLM Proxy
+                  Password is your set To64 VPA Proxy
                   <code className="bg-gray-100 px-1 py-0.5 rounded text-xs">MASTER_KEY</code>.
                 </Paragraph>
                 <Paragraph className="text-sm">
@@ -131,7 +130,7 @@ function LoginPageContent() {
             type="info"
             icon={<InfoCircleOutlined />}
             showIcon
-          />
+          /> */}
 
           {error && <Alert message={error} type="error" showIcon />}
 

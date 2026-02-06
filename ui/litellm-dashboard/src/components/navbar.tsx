@@ -11,17 +11,15 @@ import {
 import { fetchProxySettings } from "@/utils/proxyUtils";
 import {
   CrownOutlined,
-  GithubOutlined,
   LogoutOutlined,
   MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SafetyOutlined,
-  SlackOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Button, Dropdown, Switch, Tooltip } from "antd";
+import { Dropdown, Switch, Tooltip } from "antd";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -197,7 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({
               </Link>
               {version && (
                 <a
-                  href="https://docs.litellm.ai/release_notes"
+                  // href="https://docs.litellm.ai/release_notes"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-gray-500 border border-gray-200 rounded-lg px-2 py-0.5 bg-gray-50 font-medium -ml-2 hover:bg-gray-100 transition-colors cursor-pointer z-10"
@@ -209,7 +207,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
           {/* Right side nav items */}
           <div className="flex items-center space-x-5 ml-auto">
-            <Button
+            {/* <Button
               href="https://www.litellm.ai/support"
               target="_blank"
               rel="noopener noreferrer"
@@ -226,15 +224,15 @@ const Navbar: React.FC<NavbarProps> = ({
               icon={<GithubOutlined />}
             >
               Star us on GitHub
-            </Button>
-            <a
+            </Button> */}
+            {/* <a
               href="https://docs.litellm.ai/docs/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
             >
               Docs
-            </a>
+            </a> */}
 
             {!isPublicPage && (
               <Dropdown

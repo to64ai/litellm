@@ -284,17 +284,15 @@ const ModelsAndEndpointsView: React.FC<ModelDashboardProps> = ({ premiumUser, te
             <div className="flex-1 min-w-0">
               <h4 className="text-gray-900 font-semibold text-sm m-0">Missing a provider?</h4>
               <p className="text-gray-500 text-xs m-0 mt-0.5">
-                The LiteLLM engineering team is constantly adding support for new LLM models, providers, endpoints. If
+                The To64 engineering team is constantly adding support for new LLM models, providers, endpoints. If
                 you don&apos;t see the one you need, let us know and we&apos;ll prioritize it.
               </p>
             </div>
             <a
-              href="https://models.litellm.ai/?request=true"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:support@to64.ai?subject=Request%20for%20New%20Provider%20Support&body=Hi%20To64%20Team%2C%0A%0AI%20would%20like%20to%20request%20support%20for%20a%20new%20provider.%0A%0AProvider%20Name%3A%20%0AProvider%20Website%3A%20%0AUse%20Case%3A%20%0A%0AThank%20you!"
               className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-[#6366f1] hover:bg-[#5558e3] text-white text-sm font-medium rounded-lg transition-colors"
             >
-              Request Provider
+              Contact Admin
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4"
@@ -306,7 +304,7 @@ const ModelsAndEndpointsView: React.FC<ModelDashboardProps> = ({ premiumUser, te
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
             </a>

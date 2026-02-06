@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "To64 AI VPA Dashboard",
   description: "VPA Proxy Admin UI",
-  icons: { icon: "./favicon.ico" },
+  icons: { icon: "/ui/logos/favicon.png" },
 };
 
 export default function RootLayout({
