@@ -11,7 +11,7 @@ if ! command -v nvm &> /dev/null; then
 fi
 
 # Use nvm to set the required Node.js version
-nvm use v20
+nvm use v20.20.0
 
 # Check if nvm use was successful
 if [ $? -ne 0 ]; then
@@ -22,6 +22,9 @@ fi
 # print contents of ui_colors.json
 echo "Contents of ui_colors.json:"
 cat ui_colors.json
+
+#echo "Installing npm dependencies..."
+npm ci
 
 # Run npm build
 npm run build
