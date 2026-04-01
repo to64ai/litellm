@@ -2924,7 +2924,7 @@ class ProxyException(Exception):
     # This is used to map exactly to OPENAI Exceptions
     def __init__(
         self,
-        message: str,
+        message: Union[str, dict],
         type: str,
         param: Optional[str],
         code: Optional[Union[int, str]] = None,  # maps to status code
@@ -2932,13 +2932,14 @@ class ProxyException(Exception):
         openai_code: Optional[str] = None,  # maps to 'code'  in openai
         provider_specific_fields: Optional[dict] = None,
     ):
-        self.message = str(message)
+        # Keep dict as-is so error.message in response can be an object (e.g. guardrail payload)
+        self.message = message if isinstance(message, dict) else str(message)
         self.type = type
         self.param = param
         self.openai_code = openai_code or code
         # If we look on official python OpenAI lib, the code should be a string:
         # https://github.com/openai/openai-python/blob/195c05a64d39c87b2dfdf1eca2d339597f1fce03/src/openai/types/shared/error_object.py#L11
-        # Related LiteLLM issue: https://github.com/BerriAI/litellm/discussions/4834
+        # Related LiteLLM issue: https://github.com/BerriAI/litellm/issues/4834
         self.code = str(code)
         if headers is not None:
             for k, v in headers.items():
@@ -2949,12 +2950,17 @@ class ProxyException(Exception):
         # rules for proxyExceptions
         # Litellm router.py returns "No healthy deployment available" when there are no deployments available
         # Should map to 429 errors https://github.com/BerriAI/litellm/issues/2487
+        _msg = (
+            self.message.get("error", str(self.message))
+            if isinstance(self.message, dict)
+            else self.message
+        )
         if (
-            "No healthy deployment available" in self.message
-            or "No deployments available" in self.message
+            "No healthy deployment available" in _msg
+            or "No deployments available" in _msg
         ):
             self.code = "429"
-        elif RouterErrors.no_deployments_with_tag_routing.value in self.message:
+        elif RouterErrors.no_deployments_with_tag_routing.value in _msg:
             self.code = "401"
 
     def to_dict(self) -> dict:

@@ -441,6 +441,12 @@ class InMemoryGuardrailHandler:
         ):
             litellm_params.api_base = str(get_secret(litellm_params.api_base))
 
+        # PointGuardAI and other guardrails: resolve os.environ/ for org_code and policy_config_name
+        for attr in ("org_code", "policy_config_name"):
+            val = getattr(litellm_params, attr, None)
+            if val and isinstance(val, str) and val.startswith("os.environ/"):
+                setattr(litellm_params, attr, str(get_secret(val)))
+
         guardrail_type = litellm_params.guardrail
 
         if guardrail_type is None:

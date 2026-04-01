@@ -152,14 +152,12 @@ guardrails:
   - guardrail_name: "pointguardai-pre-guard"
     litellm_params:
       guardrail: pointguard_ai
-      mode: "pre_call"  # supported values: "pre_call", "post_call", "during_call"
-      default_on: true   # run on all requests; set false to run only when client passes guardrails: ["pointguardai-pre-guard"]
+      mode: "pre_call"
       org_code: os.environ/POINTGUARDAI_ORG_CODE
-      org_unit_code: os.environ/POINTGUARDAI_ORG_UNIT_CODE
       api_base: os.environ/POINTGUARDAI_API_URL_BASE
       api_key: os.environ/POINTGUARDAI_API_KEY
       policy_config_name: os.environ/POINTGUARDAI_CONFIG_NAME
-      fallback_on_error: true  # allow requests when PointGuard API returns 404/503
+      correlation_key: "litellm-proxy"  # optional: filter by this in Runtime Alerts
 
 litellm_settings:
   # set_verbose: True  # Uncomment this if you want to see verbose logs; not recommended in production
